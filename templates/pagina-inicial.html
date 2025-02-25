@@ -5,9 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: #7003ff;
+        }
+
+        h1{
+            text-align: center;
+            color: white;
+        }
+
+        .container-principal{
+            margin: 20px;
+            padding: 12px;
+            background: linear-gradient(#0000FF, #0000CD, #00008B, #000099);
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-left: 36%;
+            max-height: 100vh;
+            border-radius: 5px;
+        }
+
+        .label-usuario{
+            padding: 10px;
+            color: white;
+            font-size: large;
+        }
+
+        .label-comentario{
+            padding: 10px;
+            color: white;
+            font-size: large;
+        }
+
+        .input-usuario{
+            border: none;
+            height: 20px;
+            border-radius: 5px;
+        }
+
+        .textarea-comentario{
+            border: none;
+            max-width: 480px;
+            border-radius: 5px;
+        }
+
+        .btn-enviar{
+            width: 100px;
+            height: 40px;
+            font-size: larger;
+            background-color: rgb(80, 80, 245);
+            border: none;
+            color: white;
+        }
+
+        .btn-enviar:hover{
+            background-color: rgb(46, 46, 245);
+        }
+    </style>
 </head>
 <body>
-    <h1>Página Inicial</h1>
-    <p>Esta é a minha página inicial</p>
+        
+        <form action="/cadastro" method="POST" class="container-principal">
+            <h1>Seja Bem-Vindo à Página de Cadastro</h1>
+            <label class="label-usuario">Usuário</label><br>
+            <input name="usuario" type="text" class="input-usuario"><br>
+            <label class="label-comentario">Comentário</label><br>
+            <textarea name="comentario" class="textarea-comentario"></textarea><br>
+            <button class="btn-enviar">Enviar</button>
+        </form>
 </body>
 </html>
