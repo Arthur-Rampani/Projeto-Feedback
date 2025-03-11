@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=["GET"])
 def pagina_inicial():
-    return render_template("pagina-inicial.html")
+    mensagens = Mensagem.recuperar_mensagens()
+    return render_template("pagina-inicial.html", mensagens = Mensagem)
 
 @app.route("/cadastro", methods=["POST"])
 def pagina_cadastro():
