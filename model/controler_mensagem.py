@@ -10,14 +10,14 @@ class Mensagem:
         conexao = Conexao.criar_conexao()
         
         #O cursor será responsável por manipular o banco de dados
-        cursor = conexao.cursor()
+        cursor = conexao.cursor(dictionary = True)
 
         #Criando o SQL que será executado
-        sql = """INSERT INTO tbcomentario
-                (nome, comentario, data_comentario)
+        sql = """INSERT INTO tb_comentarios
+                (nome, data_hora, comentario)
                 VALUES
                 (%s,%s,%s)"""
-        valores = (usuario, mensagem, data_hora)
+        valores = (usuario, data_hora, mensagem)
 
         #Executando o comando SQL
         cursor.execute(sql,valores)
@@ -36,9 +36,9 @@ class Mensagem:
         cursor = conexao.cursor(dictionary = True)
 
         #Criando o SQL que será executado
-        sql = """SELECT nome as usuario, 
-                comentario as mensagem, data_comentario 
-                FROM tbcomentario"""
+        sql = """SELECT cod_comentario, nome as usuario, 
+                comentario as mensagem, data_hora, curtidas 
+                FROM tb_comentarios"""
         
         #Executando o comando SQL
         cursor.execute(sql)
@@ -51,3 +51,23 @@ class Mensagem:
 
         return resultado
 
+    def deletar_mensagem(codigo):
+        #criando a conexão
+        conexao = Conexao.criar_conexao()
+        
+        #O cursor será responsável por manipular o banco de dados
+        cursor = conexao.cursor(dictionary = True)
+        
+        #Criando o SQL que será executado
+        sql = """DELETE FROM tb_comentarios
+                WHERE cod_comentario = %s"""
+        valores = (codigo,)
+        
+        #Executando o comando SQL
+        cursor.execute(sql, valores)
+        
+        #Comitando para gravar as alterações
+        conexao.commit()
+        
+        #Fechando a conexão
+        conexao.close()
