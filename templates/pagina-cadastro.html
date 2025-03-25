@@ -25,7 +25,8 @@
             background-color: red;
             width: 200px;
             height: 200px; 
-            gap: 2px; 
+            gap: 2px;
+            border-radius: 5px;
         }
 
         .label{
@@ -36,15 +37,16 @@
 </head>
 <body>
     <main>
-        <h1>Bem-Vindo a Página de Cadastro</h1>
-        <div class="container-principal">
-            <label class="label">Login</label><br>
-            <input type="text"><br>
-            <label class="label">Nome</label><br>
-            <input type="text"><br>
-            <label class="label">Senha</label><br>
-            <input type="text">
-        </div>
+        <form action="/cadastro-usuario" method="POST" class="container-principal">
+            <h1>Seja Bem-Vindo à Página de Cadastro</h1>
+            <label class="label-login">Login</label><br>
+            <input name="login" type="text" class="input-login"><br>
+            <label class="label-nome">Nome</label><br>
+            <input name="nome" class="input-nome"></input><br>
+            <label class="label-nome">Senha</label><br>
+            <input name="senha" class="input-senha"></input><br>
+            <button class="btn-enviar">Enviar</button>
+        </form>
     </main>
 </body>
 </html>

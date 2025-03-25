@@ -39,4 +39,19 @@ def excluir_curtida(codigo):
     Mensagem.deslike_mensagem(codigo)
     return redirect("/")
 
+@app.route('/pagina-cadastro', methods=["GET"])
+def pagina_inicial_cadastro():
+    usuarios = Mensagem.recuperar_usuarios()
+    return render_template("pagina-cadastro.html", usuarios = usuarios)
+
+@app.route("/cadastro-usuario")
+def adicionar_usuarios():
+    login = request.form.get("login")
+    nome = request.form.get("nome")
+    senha = request.form.get("senha")
+
+    Mensagem.adicionar_usuario(login, nome, senha)
+
+    return redirect("/pagina-cadastro")
+
 app.run(debug=True)
