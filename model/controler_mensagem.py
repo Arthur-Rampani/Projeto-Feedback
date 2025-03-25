@@ -71,3 +71,35 @@ class Mensagem:
         
         #Fechando a conexão
         conexao.close()
+
+    def curtir_mensagem(codigo):
+        conexao = Conexao.criar_conexao()
+
+        cursor = conexao.cursor(dictionary = True)
+
+        sql = """UPDATE tb_comentarios
+                set curtidas = curtidas + 1
+                WHERE cod_comentario = %s;"""
+        valores = (codigo,)
+
+        cursor.execute(sql,valores)
+
+        conexao.commit()
+
+        conexao.close()
+
+    def deslike_mensagem(codigo):
+        conexao = Conexao.criar_conexao()
+
+        cursor = conexao.cursor(dictionary = True)
+
+        sql = """UPDATE tb_comentarios
+                set curtidas = curtidas - 1
+                WHERE cod_comentario = %s;"""
+        valores = (codigo,)
+
+        cursor.execute(sql, valores)
+
+        conexao.commit()
+
+        conexao.close()

@@ -31,5 +31,12 @@ def delete_mensagem(codigo):
 
 @app.route("/put/mensagem/adicionar/curtida/<codigo>")
 def adicionar_curtida(codigo):
+    Mensagem.curtir_mensagem(codigo)
     return redirect("/")
+
+@app.route("/put/mensagem/excluir/curtida/<codigo>")
+def excluir_curtida(codigo):
+    Mensagem.deslike_mensagem(codigo)
+    return redirect("/")
+
 app.run(debug=True)

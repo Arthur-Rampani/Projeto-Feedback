@@ -112,7 +112,7 @@
             margin-bottom: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 755px;
-            height: 130px;
+            height: 150px;
         }
         
         .mensagem p{
@@ -120,6 +120,50 @@
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
+        }
+
+        .btns{
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+        }
+
+        .btn-curtir{
+            width: 100px;
+            height: 50px;
+            font-size: larger;
+            background-color: rgb(80, 80, 245);
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .btn-curtir:hover{
+            background-color: rgb(46, 46, 245);
+        }
+
+        .btn-curtir a{
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-excluir{
+            width: 100px;
+            height: 50px;
+            font-size: larger;
+            background-color: rgb(80, 80, 245);
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .btn-excluir:hover{
+            background-color: rgb(46, 46, 245);
+        }
+
+        .btn-excluir a{
+            text-decoration: none;
+            color: white;
         }
     </style>
 </head>
@@ -140,8 +184,11 @@
                 <strong>{{mensagem.usuario}}</strong>{{mensagem.data_hora}}
                 <p>{{mensagem.mensagem}}</p>
                 <p>Total de curtidas: {{mensagem.curtidas}}</p>
-                <button class="btn-excluir"><a href="/delete/mensagem/{{mensagem.cod_comentario}}">Excluir</a></button>
-                <button class="btn-curtir"><a href=""></a>Curtir</button>
+                <div class="btns">
+                    <a href="/delete/mensagem/{{mensagem.cod_comentario}}"><button class="btn-excluir">Excluir</button></a>
+                    <a href="/put/mensagem/adicionar/curtida/{{mensagem.cod_comentario}}"><button class="btn-curtir">Curtir</button></a>
+                    <a href="/put/mensagem/excluir/curtida/{{mensagem.cod_comentario}}"><button class="btn-excluir">Excluir Curtida</button></a>
+                </div>
             </div>
             {% endfor %}
         </div>
