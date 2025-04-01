@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #7003ff;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+.container-principal{
+    margin: 20px;
+    padding: 12px;
+    background: linear-gradient(#0000FF, #0000CD, #00008B, #000099);
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 27%;
+    max-height: 100vh;
+    border-radius: 5px;
+}
+
+.label-usuario{
+    padding: 10px;
+    color: white;
+    font-size: large;
+}
+
+.label-comentario{
+    padding: 10px;
+    color: white;
+    font-size: large;
+}
+
+.input-usuario{
+    border: none;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.textarea-comentario{
+    border: none;
+    max-width: 480px;
+    border-radius: 5px;
+}
+
+.btn-enviar{
+    width: 100px;
+    height: 40px;
+    font-size: larger;
+    background-color: rgb(80, 80, 245);
+    border: none;
+    color: white;
+}
+
+.btn-enviar:hover{
+    background-color: rgb(46, 46, 245);
+}
+
+.btn-excluir{
+    width: 100px;
+    height: 40px;
+    font-size: larger;
+    background-color: rgb(80, 80, 245);
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-excluir:hover{
+    background-color: rgb(46, 46, 245);
+}
+
+.btn-excluir a{
+    text-decoration: none;
+    color: white;
+}
+
+.mensagens{
+    background-color: #7003ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.mensagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 755px;
+    height: 150px;
+}
+
+.mensagem p{
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.btn-curtir{
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+    background-color: rgb(80, 80, 245);
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-curtir:hover{
+    background-color: rgb(46, 46, 245);
+}
+
+.btn-curtir a{
+    text-decoration: none;
+    color: white;
+}
+
+.btn-excluir{
+    width: 100px;
+    height: 50px;
+    font-size: larger;
+    background-color: rgb(80, 80, 245);
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-excluir:hover{
+    background-color: rgb(46, 46, 245);
+}
+
+.btn-excluir a{
+    text-decoration: none;
+    color: white;
+}

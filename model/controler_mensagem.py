@@ -103,36 +103,3 @@ class Mensagem:
         conexao.commit()
 
         conexao.close()
-
-    def recuperar_usuarios():
-        conexao = Conexao.criar_conexao()
-
-        cursor = conexao.cursor(dictionary = True)
-
-        sql = """SELECT login, nome, 
-                senha FROM tb_usuarios"""
-        
-        cursor.execute(sql)
-
-        resultado = cursor.fetchall()
-
-        cursor.close()
-
-        return resultado
-    
-    def adicionar_usuario(login, nome, senha):
-        conexao = Conexao.criar_conexao()
-        
-        cursor = conexao.cursor(dictionary = True)
-
-        sql = """INSERT INTO tb_usuarios
-                (login, nome, senha)
-                VALUES
-                (%s,%s,%s);"""
-        valores = (login, nome, senha)
-
-        cursor.execute(sql,valores)
-
-        conexao.commit()
-
-        cursor.close()

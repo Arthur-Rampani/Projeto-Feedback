@@ -1,0 +1,88 @@
+/* Reset de estilos padrão */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+    background-color: rgb(239, 17, 239);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container principal */
+.container-principal{
+    background-color: purple;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Título */
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: white;
+}
+
+/* Labels */
+.label-login, .label-nome, .label-senha{
+    display: block;
+    font-size: 15px;
+    color: white;
+}
+
+/* Campos de input */
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 5px;
+}
+
+input:focus{
+    border-color: rgb(67, 9, 67);
+    outline: none;
+}
+
+.btns{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 12px;
+    background-color: #ff1df7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 10px;
+    cursor: pointer;
+    gap: 5px;
+}
+
+/* Botão de envio */
+.btn-entrar{
+    width: 50%;
+}
+
+.btn-cadastrar:hover{
+    background-color: rgb(67, 9, 67);
+    color: white;
+}
+
+.btn-cadastrar{
+    width: 50%;
+}
+
+.btn-cadastrar:hover{
+    background-color: rgb(67, 9, 67);
+    color: white;
+}

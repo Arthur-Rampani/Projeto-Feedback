@@ -3,14 +3,17 @@ import datetime
 import mysql.connector
 from data.conexao import Conexao
 from model.controler_mensagem import Mensagem
+from model.controle_usuario import Usuario
 
 app = Flask(__name__)
 
+#Abre a página inicial do site
 @app.route('/', methods=["GET"])
 def pagina_inicial():
     mensagens = Mensagem.recuperar_mensagens()
-    return render_template("pagina-inicial.html", mensagens = mensagens)
+    return render_template("pagina-cadastro.html", mensagens = mensagens)
 
+#Adiciona o usuario e o comentário
 @app.route("/cadastro", methods=["POST"])
 def pagina_cadastro():
     #Peguei as informações vindo do formulário
@@ -24,34 +27,54 @@ def pagina_cadastro():
     #Redireciona para o index
     return redirect("/")
 
+#Deleta a mensagem
 @app.route("/delete/mensagem/<codigo>")
 def delete_mensagem(codigo):
     Mensagem.deletar_mensagem(codigo)
     return redirect("/")
 
+#Adiciona a curtida
 @app.route("/put/mensagem/adicionar/curtida/<codigo>")
 def adicionar_curtida(codigo):
     Mensagem.curtir_mensagem(codigo)
     return redirect("/")
 
+#Deleta a curtida
 @app.route("/put/mensagem/excluir/curtida/<codigo>")
 def excluir_curtida(codigo):
     Mensagem.deslike_mensagem(codigo)
     return redirect("/")
 
+#Rota para abrir a página de cadastro
 @app.route('/pagina-cadastro', methods=["GET"])
 def pagina_inicial_cadastro():
-    usuarios = Mensagem.recuperar_usuarios()
+    usuarios = Usuario.recuperar_usuarios()
     return render_template("pagina-cadastro.html", usuarios = usuarios)
 
-@app.route("/cadastro-usuario")
+#Rota para cadastrar o usuário
+@app.route("/cadastro-usuario", methods=["POST"])
 def adicionar_usuarios():
     login = request.form.get("login")
     nome = request.form.get("nome")
     senha = request.form.get("senha")
 
-    Mensagem.adicionar_usuario(login, nome, senha)
+    Usuario.adicionar_usuario(login, nome, senha)
 
     return redirect("/pagina-cadastro")
+
+@app.route("/pagina-login")
+def pagina_login():
+    return render_template("pagina-login.html")
+
+@app.route("/verificar-usuario", methods=["POST"])
+def verificar_usuario():
+    login = request.form.get("login")
+    senha = request.form.get("senha")
+    usuario = Usuario.verificar_usuario(login, senha)
+
+    if usuario:
+        return redirect("/pagina-inicial")
+    else:
+        return "ERRO"
 
 app.run(debug=True)
