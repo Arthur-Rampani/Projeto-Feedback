@@ -11,12 +11,14 @@
         
         <form action="/cadastro" method="POST" class="container-principal">
             <h1>Seja Bem-Vindo à Página de Mensagem</h1>
+            <h2>Aproveite ao máximo {{session["nome_usuario"]}}!</h2>
             <label class="label-usuario">Usuário</label><br>
             <input name="usuario" type="text" class="input-usuario"><br>
             <label class="label-comentario">Comentário</label><br>
             <textarea name="comentario" class="textarea-comentario"></textarea><br>
             <button class="btn-enviar">Enviar</button>
         </form>
+        <a class="link-sair" href="/sair">Sair</a>
 
         <div class="mensagens">
             {% for mensagem in mensagens %}
@@ -27,7 +29,7 @@
                 <div class="btns">
                     <a href="/delete/mensagem/{{mensagem.cod_comentario}}"><button class="btn-excluir">Excluir</button></a>
                     <a href="/put/mensagem/adicionar/curtida/{{mensagem.cod_comentario}}"><button class="btn-curtir">Curtir</button></a>
-                    <a href="/put/mensagem/excluir/curtida/{{mensagem.cod_comentario}}"><button class="btn-excluir">Excluir Curtida</button></a>
+                    <a href="/put/mensagem/excluir/curtida/{{mensagem.cod_comentario}}"><button class="btn-excluir">Não Curti</button></a>
                 </div>
             </div>
             {% endfor %}

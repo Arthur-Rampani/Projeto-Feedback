@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import datetime
 import mysql.connector
 from data.conexao import Conexao
@@ -6,6 +6,8 @@ from model.controler_mensagem import Mensagem
 from model.controle_usuario import Usuario
 
 app = Flask(__name__)
+
+app.secret_key = 'didico'
 
 #Abre a página inicial do site
 @app.route('/', methods=["GET"])
@@ -25,25 +27,25 @@ def pagina_cadastro():
     
 
     #Redireciona para o index
-    return redirect("/")
+    return redirect("/pagina-inicial")
 
 #Deleta a mensagem
 @app.route("/delete/mensagem/<codigo>")
 def delete_mensagem(codigo):
     Mensagem.deletar_mensagem(codigo)
-    return redirect("/")
+    return redirect("/pagina-inicial")
 
 #Adiciona a curtida
 @app.route("/put/mensagem/adicionar/curtida/<codigo>")
 def adicionar_curtida(codigo):
     Mensagem.curtir_mensagem(codigo)
-    return redirect("/")
+    return redirect("/pagina-inicial")
 
 #Deleta a curtida
 @app.route("/put/mensagem/excluir/curtida/<codigo>")
 def excluir_curtida(codigo):
     Mensagem.deslike_mensagem(codigo)
-    return redirect("/")
+    return redirect("/pagina-inicial")
 
 #Rota para abrir a página de cadastro
 @app.route('/pagina-cadastro', methods=["GET"])
@@ -66,15 +68,29 @@ def adicionar_usuarios():
 def pagina_login():
     return render_template("pagina-login.html")
 
-@app.route("/verificar-usuario", methods=["POST"])
+@app.route("/pagina-inicial")
+def pagina_mensagem():
+    if "usuario" in session:
+        mensagens = Mensagem.recuperar_mensagens()
+        return render_template("pagina-inicial.html", mensagens = mensagens)
+    else:
+        return redirect("/pagina-login")
+
+@app.route("/post/verificar-usuario", methods=["POST"])
 def verificar_usuario():
     login = request.form.get("login")
     senha = request.form.get("senha")
     usuario = Usuario.verificar_usuario(login, senha)
 
-    if usuario:
+    if usuario == True:
         return redirect("/pagina-inicial")
     else:
-        return "ERRO"
+        return redirect("/pagina-login")
+    
+@app.route("/sair")
+def sair():
+    Usuario.logoff()
+    return redirect("/pagina-login")
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)

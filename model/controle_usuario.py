@@ -1,6 +1,7 @@
 import datetime
 from data.conexao import Conexao
 from hashlib import sha256
+from flask import session
 
 class Usuario:  
     def recuperar_usuarios():
@@ -30,7 +31,7 @@ class Usuario:
 
         cursor = conexao.cursor(dictionary=True)
 
-        sql = """SELECT login, senha FROM tb_usuarios WHERE login = %s AND senha = %s"""
+        sql = """SELECT login, nome FROM tb_usuarios WHERE login = %s AND senha = %s"""
 
         valores = (login, senha)
 
@@ -44,4 +45,12 @@ class Usuario:
 
         conexao.close()
 
-        return usuario is not None  
+        if usuario:
+            session['usuario'] = usuario['login']
+            session['nome_usuario'] = usuario['nome']
+            return True
+        else:
+            return False
+        
+    def logoff():
+        session.clear()

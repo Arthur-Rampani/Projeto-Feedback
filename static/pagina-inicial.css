@@ -13,6 +13,11 @@ h1{
     color: white;
 }
 
+h2{
+    text-align: center;
+    color: white;
+}
+
 .container-principal{
     margin: 20px;
     padding: 12px;
@@ -156,4 +161,22 @@ h1{
 .btn-excluir a{
     text-decoration: none;
     color: white;
+}
+
+.link-sair{
+    display: inline-block;
+    background-color: #3a0ca3; 
+    color: white;
+    padding: 10px 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.link-sair:hover{
+    background-color: #7209b7; 
 }
