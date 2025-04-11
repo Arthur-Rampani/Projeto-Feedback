@@ -18,7 +18,9 @@
             <textarea name="comentario" class="textarea-comentario"></textarea><br>
             <button class="btn-enviar">Enviar</button>
         </form>
-        <a class="link-sair" href="/sair">Sair</a>
+        <div class="sair-container">
+            <a class="link-sair" href="/sair">Sair</a>
+        </div>
 
         <div class="mensagens">
             {% for mensagem in mensagens %}
@@ -27,9 +29,9 @@
                 <p>{{mensagem.mensagem}}</p>
                 <p>Total de curtidas: {{mensagem.curtidas}}</p>
                 <div class="btns">
-                    <a href="/delete/mensagem/{{mensagem.cod_comentario}}"><button class="btn-excluir">Excluir</button></a>
-                    <a href="/put/mensagem/adicionar/curtida/{{mensagem.cod_comentario}}"><button class="btn-curtir">Curtir</button></a>
-                    <a href="/put/mensagem/excluir/curtida/{{mensagem.cod_comentario}}"><button class="btn-excluir">Não Curti</button></a>
+                    <a href="/delete/mensagem/{{mensagem.cod_comentario}}"><button class="btn-excluir-comentario">Excluir Comentário</button></a>
+                    <a href="/put/mensagem/adicionar/curtida/{{mensagem.cod_comentario}}"><button class="btn-curtir">Curtir Comentário</button></a>
+                    <a href="/put/mensagem/excluir/curtida/{{mensagem.cod_comentario}}"><button class="btn-excluir-curtida">Descurtir Comentário</button></a>
                 </div>
             </div>
             {% endfor %}

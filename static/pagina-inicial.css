@@ -18,18 +18,41 @@ h2{
     color: white;
 }
 
-.container-principal{
-    margin: 20px;
+.container-principal {
+    margin: 20px auto;
     padding: 12px;
     background: linear-gradient(#0000FF, #0000CD, #00008B, #000099);
-    width: 500px;
+    width: 90%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
-    margin-left: 27%;
-    max-height: 100vh;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+/* Container para o botão de sair */
+.sair-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Estilização do botão de sair */
+.link-sair {
+    display: inline-block;
+    background-color: #3a0ca3;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.link-sair:hover {
+    background-color: #7209b7;
 }
 
 .label-usuario{
@@ -69,9 +92,9 @@ h2{
     background-color: rgb(46, 46, 245);
 }
 
-.btn-excluir{
+.btn-excluir-comentario{
     width: 100px;
-    height: 40px;
+    height: 50px;
     font-size: larger;
     background-color: rgb(80, 80, 245);
     border: none;
@@ -79,11 +102,11 @@ h2{
     border-radius: 5px;
 }
 
-.btn-excluir:hover{
+.btn-excluir-comentario:hover{
     background-color: rgb(46, 46, 245);
 }
 
-.btn-excluir a{
+.btn-excluir-comentario a{
     text-decoration: none;
     color: white;
 }
@@ -144,7 +167,7 @@ h2{
     color: white;
 }
 
-.btn-excluir{
+.btn-excluir-curtida{
     width: 100px;
     height: 50px;
     font-size: larger;
@@ -154,29 +177,49 @@ h2{
     border-radius: 5px;
 }
 
-.btn-excluir:hover{
+.btn-excluir-curtida:hover{
     background-color: rgb(46, 46, 245);
 }
 
-.btn-excluir a{
+.btn-excluir-curtida a{
     text-decoration: none;
     color: white;
 }
 
-.link-sair{
-    display: inline-block;
-    background-color: #3a0ca3; 
-    color: white;
-    padding: 10px 20px;
-    margin: 20px auto;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
+@media (max-width: 750px) {
+    .container-principal {
+        margin: 20px auto;
+        padding: 12px;
+        background: linear-gradient(#0000FF, #0000CD, #00008B, #000099);
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+    }
 
-.link-sair:hover{
-    background-color: #7209b7; 
+    .mensagem{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 75%;
+        height: 20%;
+    }
+
+    .btn-excluir-comentario, 
+    .btn-curtir, 
+    .btn-excluir-curtida{
+        width: 75px;
+        height: 50px;
+        font-size: small;
+        background-color: rgb(80, 80, 245);
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
 }
