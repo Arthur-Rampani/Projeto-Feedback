@@ -103,3 +103,21 @@ class Mensagem:
         conexao.commit()
 
         conexao.close()
+
+    def recuperar_ultima_mensagem(usuario):
+        conexao = Conexao.criar_conexao()
+        cursor = conexao.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT cod_comentario, nome, comentario, data_hora, curtidas
+            FROM tb_comentarios
+            WHERE nome = %s
+            ORDER BY data_hora DESC
+            LIMIT 1
+            """, (usuario,))
+   
+        mensagem = cursor.fetchone()
+
+        cursor.close()
+        conexao.close()
+        return mensagem
